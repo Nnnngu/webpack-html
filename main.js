@@ -1,2 +1,1 @@
-import $ from 'zepto';
-import 'reset-css';
+import "reset-css";
