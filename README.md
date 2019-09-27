@@ -2,10 +2,12 @@
 ## 项目启动
 ```
 yarn install
-```
 yarn start
 ```
+
+
 ## 项目打包
+
 ```
 yarn build
 ```
