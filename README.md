@@ -1,4 +1,4 @@
-#
+# allus-h5
 ## 项目启动
 ```
 yarn install
@@ -9,7 +9,7 @@ yarn start
 ## 项目打包
 
 ```
-yarn build
+yarn run build
 ```
 
 ## 开发规范
