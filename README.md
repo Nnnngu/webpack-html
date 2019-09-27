@@ -1,4 +1,4 @@
-# allus-h5
+# webpack-html
 ## 项目启动
 ```
 yarn install
