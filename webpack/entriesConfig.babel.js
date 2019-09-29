@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const files = fs.readdirSync(path.resolve(__dirname, "../src"));
+import { readdirSync } from "fs";
+import { resolve } from "path";
+const files = readdirSync(resolve(__dirname, "../src"));
 let entriesConfig = [];
 files
 	.filter(file => file)
@@ -12,4 +12,4 @@ files
 			template: `src/${file_name}/index.html`
 		});
 	});
-module.exports = entriesConfig;
+export default entriesConfig;

@@ -1,68 +1,73 @@
 {
-	"name": "test",
-	"version": "1.0.0",
-	"description": "",
-	"main": "main.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "ENVIRONMENT=build webpack --config ./webpack/webpack.config.js --progress --display-modules --colors --display-reason",
-		"start": "nodemon --watch ./src --exec \"ENVIRONMENT=development webpack-dev-server --config ./webpack/webpack.config.babel.js --progress --colors\""
-	},
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-			"pre-commit": "lint-staged",
-			"pre-add": "lint-staged",
-			"pre-push": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"src/**/*.{jsx,txs,ts,js,json,css,md}": [
-			"prettier --write",
-			"eslint --fix",
-			"git add"
-		]
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@commitlint/cli": "^8.2.0",
-		"@commitlint/config-conventional": "^8.2.0",
-		"babel-core": "^6.26.3",
-		"babel-loader": "^7.1.5",
-		"babel-preset-env": "^1.7.0",
-		"css-loader": "^3.2.0",
-		"eslint": "^6.4.0",
-		"eslint-config-prettier": "^6.3.0",
-		"eslint-friendly-formatter": "^4.0.1",
-		"eslint-loader": "^3.0.0",
-		"eslint-plugin-prettier": "^3.1.1",
-		"file-loader": "^4.2.0",
-		"html-loader": "^0.5.5",
-		"html-webpack-plugin": "^3.2.0",
-		"husky": "^4.0.0-beta.1",
-		"mini-css-extract-plugin": "^0.8.0",
-		"node-loader": "^0.6.0",
-		"node-sass": "^4.12.0",
-		"nodemon": "^1.19.2",
-		"postcss": "^7.0.18",
-		"prettier": "1.18.2",
-		"px2rem-loader": "^0.1.9",
-		"sass-loader": "^8.0.0",
-		"style-loader": "^1.0.0",
-		"url-loader": "^2.1.0",
-		"webpack": "^4.41.0",
-		"webpack-cli": "^3.3.9",
-		"webpack-dev-server": "^3.8.1"
-	},
-	"dependencies": {
-		"clean-webpack-plugin": "^3.0.0",
-		"exports-loader": "^0.7.0",
-		"lint-staged": "^9.3.0",
-		"postcss-loader": "^3.0.0",
-		"postcss-pxtorem": "^4.0.1",
-		"reset-css": "^4.0.1",
-		"script-loader": "^0.7.2",
-		"zepto": "^1.2.0"
-	}
+  "name": "allus-h5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ENVIRONMENT=build webpack --config ./webpack/webpack.config.js --progress --display-modules --colors --display-reason",
+    "start": "nodemon"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{jsx,txs,ts,js,json,css,md}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.6.2",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^3.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "file-loader": "^4.2.0",
+    "happypack": "^5.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.0.0-beta.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-loader": "^0.6.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.2",
+    "postcss": "^7.0.18",
+    "prettier": "1.18.2",
+    "px2rem-loader": "^0.1.9",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "exports-loader": "^0.7.0",
+    "lint-staged": "^9.3.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-pxtorem": "^4.0.1",
+    "reset-css": "^4.0.1",
+    "script-loader": "^0.7.2",
+    "zepto": "^1.2.0"
+  }
 }
