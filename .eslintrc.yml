@@ -1,0 +1,19 @@
+
+  root: true
+  parserOptions: 
+    sourceType: 'module'
+    ecmaVersion: 6
+  env: 
+    browser: true
+    node: true
+    es6: true
+  plugins: ["prettier"]
+  extends: ["prettier"]
+  rules:
+    "prettier/prettier": 1
+    "linebreak-style": [2, "unix"]
+    "no-extra-semi": 1
+    "no-trailing-spaces": 2
+    "no-console": 1
+    "no-eval": 2
+    "eqeqeq": 2

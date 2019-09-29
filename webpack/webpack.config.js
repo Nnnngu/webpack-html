@@ -1,9 +1,12 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
-const entriesConfig = require("./entriesConfig.js").default;
+const entriesConfig = require("./entriesConfig.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const EslintFriendlyFormatter = require("eslint-friendly-formatter");
+const Happypack = require("happypack");
+// import config from '../config';
 let entries = {
 	uni: path.resolve(__dirname, "../main.js")
 };
@@ -51,44 +54,50 @@ module.exports = {
 				removeAttributeQuotes: true
 			}
 		}),
-		// 模板
-		// new HtmlWebpackPlugin({
-		//   template: 'src/home/index.html',//模板文件
-		//   filename: 'home.html',//目标文件
-		//   chunks: ['uni', 'home'],//对应加载的资源
-		//   inject: true,//资源加入到底部
-		//   hash: true,
-		//   minify: {
-		//     removeComments: true,
-		//     collapseWhitespace: true,
-		//     removeAttributeQuotes: true
-		//   }
-		// }),
 		...pluginArray,
 		// 清除上一次构建
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({
 			filename: "[name].css",
 			chunkFilename: "[id].css"
+		}),
+		new Happypack({
+			id: "babel",
+			loaders: [
+				{
+					loader: "babel-loader",
+					options: { cacheDirectory: true }
+				}
+			]
+		}),
+		new Happypack({
+			id: "eslint",
+			loaders: [
+				{
+					loader: "eslint-loader",
+					options: {
+						// fix: true,
+						emitError: true,
+						formatter: EslintFriendlyFormatter
+					}
+				}
+			]
 		})
-		// new webpack.HotModuleReplacementPlugin(),
+		// new webpack.HotModuleReplacementPlugin()
 	],
 	module: {
 		rules: [
 			{
 				test: /(\.jsx|\.js)$/,
-				use: [
-					"babel-loader",
-					{
-						loader: "eslint-loader",
-						options: {
-							// fix: true,
-							emitError: true,
-							formatter: require("eslint-friendly-formatter")
-						}
-					}
-				],
-				exclude: /node_modules/
+				use: ["happypack/loader?id=babel"],
+				exclude: path.resolve(__dirname, "../node_modules"),
+				include: path.resolve(__dirname, "../src")
+			},
+			{
+				enforce: "pre",
+				test: /(\.jsx|\.js)$/,
+				use: ["happypack/loader?id=eslint"],
+				exclude: path.resolve(__dirname, "../node_modules")
 			},
 			{
 				test: /\.(html)$/,
@@ -110,7 +119,7 @@ module.exports = {
 					{
 						loader: "px2rem-loader",
 						options: {
-							remUnit: 16
+							remUnit: 37.5
 						}
 					},
 					"sass-loader"
@@ -137,10 +146,10 @@ module.exports = {
 	},
 	devServer: {
 		host: "0.0.0.0", //地址
-		port: 8080, //端口
+		port: 3000, //端口
 		inline: true, // 实时刷新
 		open: false, //自动打开浏览器
-		hot: false,
+		// hot: true,
 		contentBase: path.join(__dirname, "dist"),
 		historyApiFallback: true
 	}
