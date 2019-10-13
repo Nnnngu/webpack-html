@@ -1,0 +1,12 @@
+{
+	"verbose": true,
+	"restartable": "rs",
+	"execMap": {
+		"js": "ENVIRONMENT=development webpack-dev-server --config ./webpack/webpack.config.ts --progress --colors --harmony"
+	},
+	"watch": ["./src"],
+	"ext": "js ts",
+	"env": {
+		"NODE_ENV": "development"
+	}
+}
