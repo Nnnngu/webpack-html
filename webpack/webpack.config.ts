@@ -1,14 +1,16 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import path from "path";
-import webpack from "webpack";
-import entriesConfig from "./entriesConfig.babel.js";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import EslintFriendlyFormatter from "eslint-friendly-formatter";
-import Happypack from "happypack";
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const entriesConfig = require("./entriesConfig.ts");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const EslintFriendlyFormatter = require("eslint-friendly-formatter");
+const Happypack = require("happypack");
+const autoprefixer = require("autoprefixer");
+const uglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 // import config from '../config';
 let entries = {
-	uni: path.resolve(__dirname, "../main.js")
+	uni: path.resolve(__dirname, "../main")
 };
 let pluginArray = [];
 entriesConfig
@@ -31,7 +33,7 @@ entriesConfig
 		);
 	});
 
-export default {
+module.exports = {
 	devtool: "eval-source-map", //开发使用,生产禁用
 	entry: entries,
 	output: {
@@ -41,6 +43,7 @@ export default {
 		// publicPath:'' 正式版本的访问地址
 	},
 	plugins: [
+		new uglifyWebpackPlugin(),
 		new webpack.EnvironmentPlugin(["ENVIRONMENT"]),
 		new HtmlWebpackPlugin({
 			template: "index.html", //模板文件
@@ -88,14 +91,19 @@ export default {
 	module: {
 		rules: [
 			{
-				test: /(\.jsx|\.js)$/,
+				test: /(\.jsx|\.js|\.ts)$/,
 				use: ["happypack/loader?id=babel"],
 				exclude: path.resolve(__dirname, "../node_modules"),
 				include: path.resolve(__dirname, "../src")
 			},
 			{
+				test: /\.ts?$/,
+				use: ["ts-loader"],
+				exclude: path.resolve(__dirname, "../node_modules")
+			},
+			{
 				enforce: "pre",
-				test: /(\.jsx|\.js)$/,
+				test: /(\.jsx|\.js|\.ts)$/,
 				use: ["happypack/loader?id=eslint"],
 				exclude: path.resolve(__dirname, "../node_modules")
 			},
@@ -116,10 +124,19 @@ export default {
 						? "style-loader"
 						: MiniCssExtractPlugin.loader,
 					"css-loader",
+
 					{
 						loader: "px2rem-loader",
 						options: {
-							remUnit: 37.5
+							remUnit: 16
+						}
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							ident: "postcss",
+							sourceMap: true,
+							plugins: [autoprefixer({ browsers: ["last 2 versions"] })]
 						}
 					},
 					"sass-loader"
@@ -137,12 +154,20 @@ export default {
 					}
 				]
 			},
-			// 引入zepto
+			//引入zepto
 			{
 				test: require.resolve("zepto"),
 				loader: "exports-loader?window.Zepto!script-loader"
 			}
 		]
+	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.json'],
+		modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+		alias: {
+			'@': path.resolve(__dirname, '../src'),
+			'~': path.resolve(__dirname, '../'),
+		}
 	},
 	devServer: {
 		host: "0.0.0.0", //地址

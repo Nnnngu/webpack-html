@@ -7,13 +7,18 @@
     browser: true
     node: true
     es6: true
-  plugins: ["prettier"]
-  extends: ["prettier"]
+    commonjs: true
+  plugins: [ "@typescript-eslint","prettier"]
+  extends: [
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
+  parser: "@typescript-eslint/parser"
   rules:
-    "prettier/prettier": 1
     "linebreak-style": [2, "unix"]
     "no-extra-semi": 1
     "no-trailing-spaces": 2
-    "no-console": 1
-    "no-eval": 2
     "eqeqeq": 2
+    "no-var": 0

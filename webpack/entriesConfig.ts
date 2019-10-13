@@ -8,7 +8,7 @@ files
 		const file_name = file;
 		entriesConfig.push({
 			filename: file_name,
-			entrUrl: `../src/${file_name}/index.js`,
+			entrUrl: `../src/${file_name}/index.ts`,
 			template: `src/${file_name}/index.html`
 		});
 	});
