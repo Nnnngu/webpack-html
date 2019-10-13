@@ -7,6 +7,7 @@
     browser: true
     node: true
     es6: true
+<<<<<<< HEAD
     commonjs: true
   plugins: [ "@typescript-eslint","prettier"]
   extends: [
@@ -22,3 +23,15 @@
     "no-trailing-spaces": 2
     "eqeqeq": 2
     "no-var": 0
+=======
+  plugins: ["prettier"]
+  extends: ["prettier"]
+  rules:
+    "prettier/prettier": 1
+    "linebreak-style": [2, "unix"]
+    "no-extra-semi": 1
+    "no-trailing-spaces": 2
+    "no-console": 1
+    "no-eval": 2
+    "eqeqeq": 2
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b

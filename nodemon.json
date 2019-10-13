@@ -2,10 +2,16 @@
 	"verbose": true,
 	"restartable": "rs",
 	"execMap": {
+<<<<<<< HEAD
 		"js": "ENVIRONMENT=development webpack-dev-server --config ./webpack/webpack.config.ts --progress --colors --harmony"
 	},
 	"watch": ["./src"],
 	"ext": "js ts",
+=======
+		"js": "ENVIRONMENT=development webpack-dev-server --config ./webpack/webpack.config.js --progress --colors --harmony"
+	},
+	"watch": ["./src"],
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
 	"env": {
 		"NODE_ENV": "development"
 	}

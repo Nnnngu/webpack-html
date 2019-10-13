@@ -5,7 +5,11 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "build": "ENVIRONMENT=build webpack --config ./webpack/webpack.config.ts --progress --display-modules --colors --display-reason",
+=======
+    "build": "ENVIRONMENT=build webpack --config ./webpack/webpack.config.js --progress --display-modules --colors --display-reason",
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "start": "nodemon"
   },
   "husky": {
@@ -30,6 +34,7 @@
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+<<<<<<< HEAD
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
@@ -43,25 +48,41 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+=======
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.6.2",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "babel-loader": "^8.0.6",
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^3.0.0",
     "eslint-plugin-prettier": "^3.1.1",
+<<<<<<< HEAD
     "exports-loader": "^0.7.0",
+=======
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "file-loader": "^4.2.0",
     "happypack": "^5.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.0.0-beta.1",
+<<<<<<< HEAD
     "lint-staged": "^9.3.0",
+=======
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "mini-css-extract-plugin": "^0.8.0",
     "node-loader": "^0.6.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.2",
     "postcss": "^7.0.18",
+<<<<<<< HEAD
     "postcss-loader": "^3.0.0",
+=======
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "prettier": "1.18.2",
     "px2rem-loader": "^0.1.9",
     "reset-css": "^4.0.1",
@@ -77,6 +98,16 @@
     "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "clean-webpack-plugin": "^3.0.0",
+    "exports-loader": "^0.7.0",
+    "lint-staged": "^9.3.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-pxtorem": "^4.0.1",
+    "reset-css": "^4.0.1",
+    "script-loader": "^0.7.2",
+>>>>>>> 6a19b3d2e3f4c50d302a363c72a43a7094aa0c7b
     "zepto": "^1.2.0"
   }
 }
